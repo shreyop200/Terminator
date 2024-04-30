@@ -10,12 +10,12 @@ Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.
 
 ## Usage
 1. **Installation:**
-   - Download the latest stable release from [here](https://github.com/VermeilChan/Hyperion/releases/latest). 1.17+
+   - Download the latest stable release from [here](https://github.com/VermeilChan/Terminator/releases/latest). 1.17+
    - Place the JAR file in the plugins folder in your server.
 
 2. **In-Game:**
    - Get a bow.
-   - Should Be in game mode survival with no arrows in your inventory.
+   - Should be in game mode survival with no arrows in your inventory.
    - HOLD RIGHT CLICK :)
 
 ## Permissions
