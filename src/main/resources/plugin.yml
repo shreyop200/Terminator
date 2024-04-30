@@ -1,0 +1,5 @@
+name: Terminator
+version: '${project.version}'
+main: me.vermeil.terminator.Terminator
+api-version: '1.17'
+load: STARTUP
