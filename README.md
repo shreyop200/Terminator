@@ -1,7 +1,7 @@
 # Terminator - Hypixel Skyblock
 
 ## Description
-Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.net/Terminator) from the [Hypixel Skyblock](https://wiki.hypixel.net/Main_Page).
+Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.net/Terminator) from [Hypixel Skyblock](https://wiki.hypixel.net/Main_Page).
 
 ## Features
 - **3 Arrows**: Shoots 3 arrows at once.
@@ -9,21 +9,24 @@ Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.
 - **Shortbow**: Instantly shoots.
 
 ## Usage
-1. **Installation:**
-   - Download the latest stable release from [here](https://github.com/VermeilChan/Terminator/releases/latest). 1.17+
-   - Place the JAR file in the plugins folder in your server.
+### Installation
+1. Download the latest stable release from [here](https://github.com/VermeilChan/Terminator/releases/latest). Compatible with Minecraft version 1.17+.
+2. Place the JAR file in the `plugins` folder in your Minecraft server directory.
+3. Restart or reload your server to activate the plugin.
 
-2. **In-Game:**
-   - Get a bow.
-   - Should be in game mode survival with no arrows in your inventory.
-   - HOLD RIGHT CLICK :)
+### In-Game
+1. **Obtaining the Terminator:**
+   - Admins or OP players can give themselves the Aspect of the Void by using the command `/giveterminator`.
+2. **Using the Terminator:**
+   - Just Hold RIGHT CLICK or spam LEFT CLICK.<br>
+   _May require you to be in game mode survival and have no arrows in your inventory._
 
 ## Permissions
-
-- There are no permissions. All players can use the Terminator.
+- Only OP players or admins can use the `/giveterminator` command to obtain the Terminator.
+- Once given, all players can use the Terminator ability without any additional permissions.
 
 ## License
-- This plugin is licensed under [GNU General Public License v3.0](LICENSE).
+- This plugin is licensed under the [GNU General Public License v3.0](LICENSE).
 
 ## Credits
-Icon: [Furfsky](https://furfsky.net/)
+- Icon: [Furfsky](https://furfsky.net/)
