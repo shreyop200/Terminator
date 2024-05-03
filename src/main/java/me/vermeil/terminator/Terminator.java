@@ -58,7 +58,7 @@ public class Terminator extends JavaPlugin implements Listener, CommandExecutor 
         ItemStack terminatorBow = new ItemStack(Material.BOW);
         ItemMeta meta = terminatorBow.getItemMeta();
 
-        Objects.requireNonNull(meta).setDisplayName(ChatColor.LIGHT_PURPLE + "Hasty Terminator " + ChatColor.GOLD + "✪✪✪✪✪" + ChatColor.RED + "➎");
+        Objects.requireNonNull(meta).setDisplayName(ChatColor.LIGHT_PURPLE + "Hasty Terminator " + ChatColor.GOLD + "✪✪✪✪" + ChatColor.RED + "➎");
 
         List<String> lore = Arrays.asList(
                 ChatColor.GRAY + "Gear Score: " + ChatColor.LIGHT_PURPLE + "1014 " + ChatColor.DARK_GRAY + "(3467)",
@@ -69,7 +69,7 @@ public class Terminator extends JavaPlugin implements Listener, CommandExecutor 
                 ChatColor.GRAY + "Bonus Attack Speed: " + ChatColor.RED + "+44% " + ChatColor.DARK_GRAY + "(+62%)",
                 ChatColor.GRAY + "Shot Cooldown: " + ChatColor.GREEN + "0.5s",
                 "",
-                ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Soul Eater V " + ChatColor.BLUE + "Chance V, Cubism V",
+                ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Soul Eater V " + ChatColor.BLUE + "Chance V, Cubism VI",
                 ChatColor.BLUE + "Dragon Hunter V, Dragon Tracer V, Flame II",
                 ChatColor.BLUE + "Impaling III, Infinite Quiver X, Overload V",
                 ChatColor.BLUE + "Piercing I, Power VII, Punch II",
@@ -110,7 +110,7 @@ public class Terminator extends JavaPlugin implements Listener, CommandExecutor 
         }
 
         ItemMeta meta = item.getItemMeta();
-        if (!Objects.requireNonNull(meta).hasDisplayName() || !meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "Hasty Terminator " + ChatColor.GOLD + "✪✪✪✪✪" + ChatColor.RED + "➎")) {
+        if (!Objects.requireNonNull(meta).hasDisplayName() || !meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "Hasty Terminator " + ChatColor.GOLD + "✪✪✪✪" + ChatColor.RED + "➎")) {
             return;
         }
 
