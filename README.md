@@ -24,7 +24,7 @@ Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.
 
 ## Permissions
 - Only OP players or admins can use the `/giveterminator` command to obtain the Terminator.
-- Once given, all players can use the Terminator ability without any additional permissions.
+- Once given, all players can use the Terminator without any additional permissions.
 
 ## License
 - This plugin is licensed under the [GNU General Public License v3.0](LICENSE).
