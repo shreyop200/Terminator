@@ -5,12 +5,12 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -47,14 +47,14 @@ public class Terminator extends JavaPlugin implements Listener, CommandExecutor 
             return true;
         }
 
-        ItemStack terminatorBow = createTerminatorBow();
+        ItemStack terminatorBow = giveTerminator();
         player.getInventory().addItem(terminatorBow);
         player.sendMessage(ChatColor.GREEN + "You have received the Terminator");
 
         return true;
     }
 
-    private ItemStack createTerminatorBow() {
+    private ItemStack giveTerminator() {
         ItemStack terminatorBow = new ItemStack(Material.BOW);
         ItemMeta meta = terminatorBow.getItemMeta();
 
@@ -138,5 +138,33 @@ public class Terminator extends JavaPlugin implements Listener, CommandExecutor 
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setCritical(true);
         arrow.setVelocity(direction.multiply(4));
+        arrow.setDamage(371);
+    }
+
+    @EventHandler
+    public void onProjectileHit(ProjectileHitEvent event) {
+        // Credit to (https://www.spigotmc.org/threads/forcing-enderman-to-take-damage-from-projectiles.511665/#post-4336602)
+
+        if (!(event.getEntity() instanceof Arrow)) {
+            return;
+        }
+
+        Arrow arrow = (Arrow) event.getEntity();
+        Player shooter = null;
+        if (arrow.getShooter() instanceof Player) {
+            shooter = (Player) arrow.getShooter();
+        }
+
+        if (shooter == null) {
+            return;
+        }
+
+        for (Entity entity : arrow.getNearbyEntities(3, 3, 3)) {
+            if (entity instanceof Enderman) {
+                Enderman enderman = (Enderman) entity;
+                enderman.damage(371, shooter);
+                arrow.remove();
+            }
+        }
     }
 }
