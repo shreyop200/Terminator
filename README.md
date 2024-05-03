@@ -7,6 +7,7 @@ Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.
 - **3 Arrows**: Shoots 3 arrows at once.
 - **Crit Damage**: Arrow always crits.
 - **Shortbow**: Instantly shoots.
+- **Enderman**: Can damage enderman :).
 
 ## Usage
 ### Installation
