@@ -7,6 +7,9 @@ authors: [VermeilChan]
 description: Terminator is a Spigot plugin inspired by the Terminator from Hypixel Skyblock.
 website: https://github.com/VermeilChan/Terminator
 commands:
+  terminator:
+    usage: /terminator getitem
+    permission: terminator.give
   giveterminator:
     usage: /giveterminator
     permission: terminator.give
