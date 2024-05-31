@@ -1,66 +1,71 @@
+/**
+ * This class provides a method to create a custom item called Terminator.
+ */
 package me.vermeil.terminator.builder;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import me.vermeil.terminator.utils.Utils;
+import org.bukkit.enchantments.Enchantment;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * this class is responsible for the creation of items
- */
 public class TerminatorBuilder {
+
     /**
-     * creates a terminator itemStack
-     * <p></p>
-     * TODO: utilise the {@link me.vermeil.terminator.utils.utils#color(String) utils.color} method to add lore display name etc
+     * Creates and returns the Terminator with specific attributes and enchantments.
      *
-     * @return the terminator {@link ItemStack itemStack}
+     * @return The customized Terminator.
      */
     public static ItemStack giveTerminator() {
         ItemStack terminatorBow = new ItemStack(Material.BOW);
         ItemMeta meta = terminatorBow.getItemMeta();
 
-        Objects.requireNonNull(meta).setDisplayName(ChatColor.LIGHT_PURPLE + "Hasty Terminator " + ChatColor.GOLD + "✪✪✪✪" + ChatColor.RED + "➎");
+        Objects.requireNonNull(meta).setDisplayName(Utils.color("&dHasty Terminator &6✪✪✪✪&c➎"));
 
         List<String> lore = Arrays.asList(
-                ChatColor.GRAY + "Gear Score: " + ChatColor.LIGHT_PURPLE + "1014 " + ChatColor.DARK_GRAY + "(3467)",
-                ChatColor.GRAY + "Damage: " + ChatColor.RED + "371 " + ChatColor.YELLOW + "(+30) " + ChatColor.DARK_GRAY + "(+1,598)",
-                ChatColor.GRAY + "Strength: " + ChatColor.RED + "110 " + ChatColor.YELLOW + "(+30) " + ChatColor.GOLD + "[+5] " + ChatColor.BLUE + "(+20) " + ChatColor.DARK_GRAY + "(+493.5)",
-                ChatColor.GRAY + "Crit Chance: " + ChatColor.RED + "+65% " + ChatColor.BLUE + "(+60%) " + ChatColor.DARK_GRAY + "(+100,75%)",
-                ChatColor.GRAY + "Crit Damage: " + ChatColor.RED + "+280% " + ChatColor.DARK_GRAY + "(+1,198,5%)",
-                ChatColor.GRAY + "Bonus Attack Speed: " + ChatColor.RED + "+44% " + ChatColor.DARK_GRAY + "(+62%)",
-                ChatColor.GRAY + "Shot Cooldown: " + ChatColor.GREEN + "0.5s",
+                Utils.color("&7Gear Score: &d1014 &8(3467)"),
+                Utils.color("&7Damage: &c371 &e(+30) &8(+1,598)"),
+                Utils.color("&7Strength: &c110 &e(+30) &6[+5] &9(+20) &8(+493.5)"),
+                Utils.color("&7Crit Chance: &c+65% &9(+60%) &8(+100,75%)"),
+                Utils.color("&7Crit Damage: &c+280% &8(+1,198,5%)"),
+                Utils.color("&7Bonus Attack Speed: &c+44% &8(+62%)"),
+                Utils.color("&7Shot Cooldown: &a0.5s"),
                 "",
-                ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Soul Eater V " + ChatColor.BLUE + "Chance V, Cubism VI",
-                ChatColor.BLUE + "Dragon Hunter V, Dragon Tracer V, Flame II",
-                ChatColor.BLUE + "Impaling III, Infinite Quiver X, Overload V",
-                ChatColor.BLUE + "Piercing I, Power VII, Punch II",
-                ChatColor.BLUE + "Snipe IV, Vicious V",
+                Utils.color("&d&lSoul Eater V &9Chance V, Cubism VI"),
+                Utils.color("&9Dragon Hunter V, Dragon Tracer V, Flame II"),
+                Utils.color("&9Impaling III, Infinite Quiver X, Overload V"),
+                Utils.color("&9Piercing I, Power VII, Punch II"),
+                Utils.color("&9Snipe IV, Vicious V"),
                 "",
-                ChatColor.DARK_PURPLE + "◆ End Rune III",
+                Utils.color("&5◆ End Rune III"),
                 "",
-                ChatColor.GRAY + "Shoots " + ChatColor.AQUA + "3 " + ChatColor.GRAY + "arrows at ones.",
-                ChatColor.GRAY + "Can damage enderman.",
+                Utils.color("&7Shoots &b3 &7arrows at once."),
+                Utils.color("&7Can damage enderman."),
                 "",
-                ChatColor.RED + "Divides your " + ChatColor.BLUE + "☣ Crit Chance " + ChatColor.RED + "by 4!",
+                Utils.color("&cDivides your &9☣ Crit Chance &cby 4!"),
                 "",
-                ChatColor.GOLD + "Ability: Salvation" + ChatColor.YELLOW + " " + ChatColor.BOLD + "LEFT CLICK",
-                ChatColor.GRAY + "Can be casted after landing " + ChatColor.GOLD + "3 " + ChatColor.GRAY + "hits.",
-                ChatColor.GRAY + "Shoot a beam, penetrating up to " + ChatColor.YELLOW + "5",
-                ChatColor.GRAY + "enemies.",
-                ChatColor.GRAY + "The beam always crits.",
-                ChatColor.DARK_GRAY + "Soulflow Cost: " + ChatColor.DARK_AQUA + "1⸎",
+                Utils.color("&6Ability: Salvation &e&lLEFT CLICK"),
+                Utils.color("&7Can be casted after landing &6&l3 &7hits."),
+                Utils.color("&7Shoot a beam, penetrating up to &e5"),
+                Utils.color("&7enemies."),
+                Utils.color("&7The beam always crits."),
+                Utils.color("&8Soulflow Cost: &3&l1⸎"),
                 "",
-                ChatColor.LIGHT_PURPLE + "Shortbow: Instantly shoots!",
+                Utils.color("&dShortbow: Instantly shoots!"),
                 "",
-                ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "A" + ChatColor.RESET + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + " MYTHIC DUNGEON BOW " + ChatColor.MAGIC + "A"
+                Utils.color("&d&l&kA&a &d&lMYTHIC DUNGEON BOW &kA")
         );
 
         meta.setLore(lore);
+        meta.addEnchant(Enchantment.UNBREAKING, 100, true);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setUnbreakable(true);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         terminatorBow.setItemMeta(meta);
 
         return terminatorBow;
