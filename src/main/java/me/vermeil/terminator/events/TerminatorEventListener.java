@@ -1,10 +1,7 @@
-/**
- * This class implements event listeners for the Terminator.
- */
 package me.vermeil.terminator.events;
 
 import me.vermeil.terminator.Terminator;
-import me.vermeil.terminator.utils.Utils;
+import me.vermeil.terminator.utils.ColorUtils;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
@@ -33,21 +30,10 @@ public class TerminatorEventListener implements Listener {
 
     private final Terminator plugin;
 
-    /**
-     * Constructor for the TerminatorEventListener class.
-     *
-     * @param plugin The main plugin instance.
-     */
     public TerminatorEventListener(Terminator plugin) {
         this.plugin = plugin;
     }
 
-    /**
-     * Shoots arrows when the player interacts with the Terminator Bow.
-     *
-     * @param player     The player interacting.
-     * @param direction  The direction to shoot the arrows.
-     */
     private void shootArrow(Player player, Vector direction) {
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setCritical(true);
@@ -55,11 +41,6 @@ public class TerminatorEventListener implements Listener {
         arrow.setDamage(371);
     }
 
-    /**
-     * Handles player interactions with the Terminator Bow.
-     *
-     * @param event The player interact event.
-     */
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -68,7 +49,7 @@ public class TerminatorEventListener implements Listener {
 
         ItemMeta meta = item.getItemMeta();
         String displayName = Objects.requireNonNull(meta).getDisplayName();
-        String targetDisplayName = Utils.color("&dHasty Terminator &6✪✪✪✪&c➎");
+        String targetDisplayName = ColorUtils.color("&dHasty Terminator &6✪✪✪✪&c➎");
         if (!displayName.equals(targetDisplayName)) return;
 
         if (!CLICK_ACTIONS.contains(event.getAction())) return;
@@ -86,19 +67,16 @@ public class TerminatorEventListener implements Listener {
         }.runTask(plugin);
     }
 
-    /**
-     * Handles projectile hits related to the Terminator.
-     *
-     * @param event The projectile hit event.
-     */
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
-        if (!(event.getEntity() instanceof Arrow arrow)) return;
-
-        if (!(arrow.getShooter() instanceof Player shooter)) return;
+        if (!(event.getEntity() instanceof Arrow)) return;
+        Arrow arrow = (Arrow) event.getEntity();
+        if (!(arrow.getShooter() instanceof Player)) return;
+        Player shooter = (Player) arrow.getShooter();
 
         for (Entity entity : arrow.getNearbyEntities(3, 3, 3)) {
-            if (entity instanceof Enderman enderman) {
+            if (entity instanceof Enderman) {
+                Enderman enderman = (Enderman) entity;
                 enderman.damage(371, shooter);
                 arrow.remove();
                 break;
