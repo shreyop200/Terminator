@@ -11,16 +11,20 @@ Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.
 
 ## Usage
 ### Installation
-1. Download the latest stable release from [here](https://github.com/VermeilChan/Terminator/releases/latest). Compatible with Minecraft version 1.17+.
+1. Download the latest stable release from [here](https://github.com/VermeilChan/Terminator/releases/latest).
 2. Place the JAR file in the `plugins` folder in your Minecraft server directory.
 3. Restart or reload your server to activate the plugin.
 
 ### In-Game
 1. **Obtaining the Terminator:**
-   - Admins or OP players can give themselves the Aspect of the Void by using the command `/giveterminator`.
+   - Anyone can give themselves the Terminator by using the command /giveterminator.
 2. **Using the Terminator:**
    - Just Hold RIGHT CLICK or spam LEFT CLICK.<br>
    _May require you to be in game mode survival and have no arrows in your inventory._
+
+## Compatibility
+- Supports Spigot 1.17 to 1.20.4 (some features may not work).
+- Fully compatible with Spigot 1.20.5+
 
 ## Permissions
 - Only OP players or admins can use the `/giveterminator` command to obtain the Terminator.
