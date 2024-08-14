@@ -22,10 +22,6 @@ public class TerminatorCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (!player.isOp()) {
-            return true;
-        }
-
         ItemStack terminatorBow = TerminatorBuilder.giveTerminator();
         player.getInventory().addItem(terminatorBow);
         player.sendMessage(ColorUtils.color("&aYou have received the Terminator."));

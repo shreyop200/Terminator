@@ -17,18 +17,16 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.EnumSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class TerminatorEventListener implements Listener {
     private static final Set<Action> CLICK_ACTIONS = EnumSet.of(
-            Action.RIGHT_CLICK_AIR,
-            Action.RIGHT_CLICK_BLOCK,
-            Action.LEFT_CLICK_AIR,
-            Action.LEFT_CLICK_BLOCK
+            Action.RIGHT_CLICK_AIR, Action.RIGHT_CLICK_BLOCK,
+            Action.LEFT_CLICK_AIR, Action.LEFT_CLICK_BLOCK
     );
 
     private final Terminator plugin;
+    private static final String TARGET_DISPLAY_NAME = ColorUtils.color("&dHasty Terminator &6✪✪✪✪&c➎");
 
     public TerminatorEventListener(Terminator plugin) {
         this.plugin = plugin;
@@ -43,43 +41,35 @@ public class TerminatorEventListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
         ItemStack item = event.getItem();
-        if (item == null || !item.hasItemMeta()) return;
+        if (item == null) return;
 
         ItemMeta meta = item.getItemMeta();
-        String displayName = Objects.requireNonNull(meta).getDisplayName();
-        String targetDisplayName = ColorUtils.color("&dHasty Terminator &6✪✪✪✪&c➎");
-        if (!displayName.equals(targetDisplayName)) return;
+        if (meta == null || !TARGET_DISPLAY_NAME.equals(meta.getDisplayName())) return;
 
-        if (!CLICK_ACTIONS.contains(event.getAction())) return;
-
-        event.setCancelled(true);
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Vector forward = player.getLocation().getDirection();
-                shootArrow(player, forward);
-                shootArrow(player, forward.clone().rotateAroundY(Math.toRadians(15)));
-                shootArrow(player, forward.clone().rotateAroundY(Math.toRadians(-15)));
-            }
-        }.runTask(plugin);
+        if (CLICK_ACTIONS.contains(event.getAction())) {
+            event.setCancelled(true);
+            Vector forward = event.getPlayer().getLocation().getDirection();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    shootArrow(event.getPlayer(), forward);
+                    shootArrow(event.getPlayer(), forward.clone().rotateAroundY(Math.toRadians(15)));
+                    shootArrow(event.getPlayer(), forward.clone().rotateAroundY(Math.toRadians(-15)));
+                }
+            }.runTask(plugin);
+        }
     }
 
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
-        if (!(event.getEntity() instanceof Arrow)) return;
-        Arrow arrow = (Arrow) event.getEntity();
-        if (!(arrow.getShooter() instanceof Player)) return;
-        Player shooter = (Player) arrow.getShooter();
-
-        for (Entity entity : arrow.getNearbyEntities(3, 3, 3)) {
-            if (entity instanceof Enderman) {
-                Enderman enderman = (Enderman) entity;
-                enderman.damage(371, shooter);
-                arrow.remove();
-                break;
+        if (event.getEntity() instanceof Arrow arrow && arrow.getShooter() instanceof Player shooter) {
+            for (Entity entity : arrow.getNearbyEntities(3, 3, 3)) {
+                if (entity instanceof Enderman enderman) {
+                    enderman.damage(371, shooter);
+                    arrow.remove();
+                    break;
+                }
             }
         }
     }

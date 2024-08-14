@@ -1,7 +1,7 @@
 name: Terminator
 version: '${project.version}'
 main: me.vermeil.terminator.Terminator
-api-version: '1.17'
+api-version: '1.20'
 load: STARTUP
 authors: [VermeilChan]
 description: Terminator is a Spigot plugin inspired by the Terminator from Hypixel Skyblock.
@@ -9,6 +9,8 @@ website: https://github.com/VermeilChan/Terminator
 commands:
   giveterminator:
     usage: /giveterminator
+    description: Gives the Terminator item to the player.
 permissions:
   terminator.give:
     default: true
+    description: Allows players to use the /giveterminator command.
