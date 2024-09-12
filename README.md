@@ -22,13 +22,8 @@ Terminator is a Spigot plugin inspired by the [Terminator](https://wiki.hypixel.
    - Just Hold RIGHT CLICK or spam LEFT CLICK.<br>
    _May require you to be in game mode survival and have no arrows in your inventory._
 
-## Compatibility
-- Supports Spigot 1.17 to 1.20.4 (some features may not work).
-- Fully compatible with Spigot 1.20.5+
-
 ## Permissions
-- Only OP players or admins can use the `/giveterminator` command to obtain the Terminator.
-- Once given, all players can use the Terminator without any additional permissions.
+- There are no permissions. All players can get and use the Terminator.
 
 ## License
 - This plugin is licensed under the [GNU General Public License v3.0](LICENSE).
