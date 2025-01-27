@@ -1,8 +1,9 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -22,6 +23,9 @@ jobs:
         cache: 'maven'
         server-id: github
         settings-path: ${{ github.workspace }}
+
+    - name: Build with Maven
+      run: mvn clean package
 
     - name: Upload JAR Artifact
       uses: actions/upload-artifact@v4.6.0
