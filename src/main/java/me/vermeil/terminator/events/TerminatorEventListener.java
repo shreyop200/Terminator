@@ -2,6 +2,7 @@ package me.vermeil.terminator.events;
 
 import me.vermeil.terminator.Terminator;
 import me.vermeil.terminator.utils.ColorUtils;
+import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
@@ -37,6 +38,7 @@ public class TerminatorEventListener implements Listener {
         arrow.setCritical(true);
         arrow.setVelocity(direction.multiply(4));
         arrow.setDamage(371);
+        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1.0f, 1.0f);
     }
 
     @EventHandler
