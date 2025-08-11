@@ -1,7 +1,7 @@
-package me.vermeil.terminator.commands;
+package dev.mitra88.terminator.commands;
 
-import me.vermeil.terminator.builder.TerminatorBuilder;
-import me.vermeil.terminator.utils.ColorUtils;
+import dev.mitra88.terminator.builder.TerminatorBuilder;
+import dev.mitra88.terminator.utils.ColorUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

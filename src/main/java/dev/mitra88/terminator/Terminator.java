@@ -1,7 +1,7 @@
-package me.vermeil.terminator;
+package dev.mitra88.terminator;
 
-import me.vermeil.terminator.commands.TerminatorCommand;
-import me.vermeil.terminator.events.TerminatorEventListener;
+import dev.mitra88.terminator.commands.TerminatorCommand;
+import dev.mitra88.terminator.events.TerminatorEventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;

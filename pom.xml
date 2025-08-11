@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>me.vermeil</groupId>
+  <groupId>dev.mitra88</groupId>
   <artifactId>Terminator</artifactId>
-  <version>v1.7.0</version>
+  <version>1.8.0</version>
   <packaging>jar</packaging>
 
   <name>Terminator</name>
@@ -64,7 +64,7 @@
       <dependency>
           <groupId>org.spigotmc</groupId>
           <artifactId>spigot-api</artifactId>
-          <version>1.21.5-R0.1-SNAPSHOT</version>
+          <version>1.21.8-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
   </dependencies>

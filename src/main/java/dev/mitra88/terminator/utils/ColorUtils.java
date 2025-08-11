@@ -1,4 +1,4 @@
-package me.vermeil.terminator.utils;
+package dev.mitra88.terminator.utils;
 
 import org.bukkit.ChatColor;
 
