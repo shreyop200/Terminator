@@ -21,7 +21,7 @@ public class TerminatorBuilder {
 
         List<String> lore = Arrays.asList(
                 ColorUtils.color("&7Gear Score: &d1014 &8(3467)"),
-                ColorUtils.color("&7Damage: &c371 &e(+30) &8(+1,598)"),
+                ColorUtils.color("&7Damage: &c36182 &e(+30) &8(+1,598)"),
                 ColorUtils.color("&7Strength: &c110 &e(+30) &6[+5] &9(+20) &8(+493.5)"),
                 ColorUtils.color("&7Crit Chance: &c+65% &9(+60%) &8(+100,75%)"),
                 ColorUtils.color("&7Crit Damage: &c+280% &8(+1,198,5%)"),
