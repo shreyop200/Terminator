@@ -10,7 +10,8 @@ commands:
   giveterminator:
     usage: /giveterminator
     description: Gives the Terminator item to the player.
+    permission: terminator.give
 permissions:
   terminator.give:
-    default: true
-    description: Allows players to use the /giveterminator command.
+    default: op
+    description: Allows operators to use the /giveterminator command.
