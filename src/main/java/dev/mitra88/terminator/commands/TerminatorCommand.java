@@ -22,6 +22,11 @@ public class TerminatorCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
+        if (!player.isOp()) {
+            player.sendMessage(ColorUtils.color("&cYou must be an operator to use this command."));
+            return true;
+        }
+
         ItemStack terminatorBow = TerminatorBuilder.giveTerminator();
         player.getInventory().addItem(terminatorBow);
         player.sendMessage(ColorUtils.color("&aYou have received the Terminator."));
