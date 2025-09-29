@@ -4,14 +4,10 @@ import dev.mitra88.terminator.Terminator;
 import dev.mitra88.terminator.utils.ColorUtils;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Enderman;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -20,7 +16,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TerminatorEventListener implements Listener {
 
@@ -29,8 +24,8 @@ public class TerminatorEventListener implements Listener {
             Action.LEFT_CLICK_AIR, Action.LEFT_CLICK_BLOCK
     );
 
-    private static final String TARGET_DISPLAY_NAME = ColorUtils.color("&dHasty Terminator &6✪✪✪✪&c➎");
-    private static final float SIDE_SPREAD_DEGREES = 20f;
+    private static final String TARGET_DISPLAY_NAME = ColorUtils.color("&7Training Terminator");
+    private static final float SIDE_SPREAD_DEGREES = 10f;
     private static final long HOLD_WINDOW_MS = 250;
 
     private final Terminator plugin;
@@ -43,7 +38,6 @@ public class TerminatorEventListener implements Listener {
     }
 
     private final Map<UUID, HoldState> holdMap = new HashMap<>();
-    private final Map<UUID, Double> lastMonsterDamage = new HashMap<>();
 
     public TerminatorEventListener(Terminator plugin) {
         this.plugin = plugin;
@@ -79,18 +73,12 @@ public class TerminatorEventListener implements Listener {
 
     private void shootArrow(Player player, Vector direction) {
         Arrow arrow = player.launchProjectile(Arrow.class);
-        arrow.setCritical(true);
+        arrow.setCritical(false);
         arrow.setVelocity(direction.multiply(4));
+        arrow.setDamage(0.05); // super weak
+        arrow.setKnockbackStrength(0);
 
-        double baseDamage = ThreadLocalRandom.current().nextDouble(20000, 50000);
-
-        double soulBonus = lastMonsterDamage.getOrDefault(player.getUniqueId(), 0.0) * 10;
-
-        double totalDamage = baseDamage + soulBonus;
-
-        arrow.setDamage(totalDamage);
-
-        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1.0f, 1.0f);
+        player.playSound(player.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1.0f, 1.0f);
     }
 
     @EventHandler
@@ -129,24 +117,8 @@ public class TerminatorEventListener implements Listener {
 
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
-        if (event.getEntity() instanceof Arrow arrow && arrow.getShooter() instanceof Player shooter) {
-            for (Entity entity : arrow.getNearbyEntities(3, 3, 3)) {
-                if (entity instanceof Enderman enderman) {
-                    enderman.damage(arrow.getDamage(), shooter);
-                    arrow.remove();
-                    break;
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onEntityDeath(EntityDeathEvent event) {
-        if (event.getEntity().getKiller() != null && event.getEntity().getKiller() != null) {
-            Player player = event.getEntity().getKiller();
-            LivingEntity monster = event.getEntity();
-            double monsterDamage = Objects.requireNonNull(monster.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH)).getValue();
-            lastMonsterDamage.put(player.getUniqueId(), monsterDamage);
+        if (event.getEntity() instanceof Arrow arrow && arrow.getShooter() instanceof Player) {
+            arrow.remove(); // arrows always vanish
         }
     }
 }
